@@ -21,8 +21,10 @@ Build scripts and environment for Embedded Bagels builds &amp; releases
   + flash the board
 
 *Note*
+```
 Full build will require ~80 GiB disk-space.
 Initial build will take a long time. On my system it takes ~2hrs.
    Memory: 30.9 GiB
    Processor: Intel® Core™ i7-6770HQ CPU @ 2.60GHz × 8 
    Disk: SanDisk SSD SD8SN8U256G1122 (X4120000)
+```
