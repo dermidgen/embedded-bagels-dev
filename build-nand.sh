@@ -5,6 +5,8 @@ source ./lib/utils.sh
 
 ORIG_WORKSPACE=$(pwd)
 
+path_ensure $BUILD_PATH
+path_ensure $YOCTO_PATH
 path_ensure $RELEASE_PATH
 
 pushd $YOCTO_PATH
@@ -19,6 +21,7 @@ repo_sync meta-openembedded git://git.openembedded.org/meta-openembedded  krogot
 pushd poky
 source oe-init-build-env build-atmel
 
+bitbake core-image-minimal
 bitbake atmel-qt5-demo-image
 
 # Release
