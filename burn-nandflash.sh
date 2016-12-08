@@ -10,7 +10,10 @@ focus down
 chdir ./release
 screen -t "window" bash -ic 'PATH=./bin/sam-ba_cdc_linux:$PATH bash'
 title "nandflash"
-exec echo "Run ./do_linux_nandflash.sh when ready.\n"
+exec echo ""
+exec echo "Run ./do_linux_nandflash.sh when ready."
+exec echo "When you're done, press CTL-a \."
+exec echo ""
 EOL
 fi
 
