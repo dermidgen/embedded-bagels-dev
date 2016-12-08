@@ -45,3 +45,21 @@ resource_ensure ()
     curl -o $1 $2
   fi
 }
+
+repo_ensure ()
+{
+  echo "Checking for repo: $1"
+  if [ ! -d $1 ]; then
+    echo "Cloning repo: $2 at branch $3 to $1"
+    git clone $2 -b $3 $1
+  fi
+}
+
+repo_sync ()
+{
+  echo "Syncing repo:\n\tpath: $1\n\turi: $2\n\tbranch: $3"
+  repo_ensure $1 $2 $3
+  pushd $1
+  git fetch --all --prune && git pull origin $3
+  popd
+}
