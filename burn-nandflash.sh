@@ -1,21 +1,25 @@
 #!/bin/bash
 
-if [ ! -f ".screenrc" ]; then
-  cat >./.screenrc <<EOL
-screen
-title "picocom"
-stuff "picocom -b 115200 /dev/ttyUSB0\n"
-split
-focus down
-chdir ./release
-screen -t "window" bash -ic 'PATH=./bin/sam-ba_cdc_linux:$PATH bash'
-title "nandflash"
-exec echo ""
-exec echo "Run ./do_linux_nandflash.sh when ready."
-exec echo "When you're done, press CTL-a \."
-exec echo ""
-EOL
-fi
+source ./environment
+source ./lib/utils.sh
+source ./lib/acm.sh
 
-# Run screen
-screen -c .screenrc
+ORIG_WORKSPACE=$(pwd)
+
+echo "Getting ready to flash NAND"
+echo "Firing up debug terminal /dev/ttyUSB0..."
+sleep 1
+echo `(x-terminal-emulator --working-directory $ORIG_WORKSPACE -e $ORIG_WORKSPACE/debug-term.sh &> /dev/null) &`;
+
+sleep 1
+echo ""
+echo "Close JP7 and connect your device..."
+echo "Watch the debug terminal for RomBOOT..."
+
+wait_for_acm_device
+
+echo "Device found..."
+echo ""
+read -p "Open JP7 and press any key to continue... " -n1 -s
+
+cowsay "Okay, here we go!"

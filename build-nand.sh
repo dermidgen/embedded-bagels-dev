@@ -2,6 +2,7 @@
 
 source ./environment
 source ./lib/utils.sh
+source ./lib/acm.sh
 
 ORIG_WORKSPACE=$(pwd)
 
@@ -41,3 +42,5 @@ cp $BUILT_ROOTFS    $RELEASED_ROOTFS
 cp $BUILT_UBENV     $RELEASED_UBENV
 
 cp nandflash/*      $RELEASE_PATH/.
+
+cowsay "All done!"
