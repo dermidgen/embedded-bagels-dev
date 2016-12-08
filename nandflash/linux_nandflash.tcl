@@ -16,4 +16,4 @@ set videoMode		""
 set build_uboot_env "yes"
 
 ## now call common script
-source demo_script_linux_nandflash.tcl
+source script_linux_nandflash.tcl

@@ -1,4 +1,4 @@
-pkg/*.bin
-pkg/*.ubi
-pkg/*.dtb
-pkg/*.log
+resource/*
+release/*
+build/*
+bin/*
