@@ -22,4 +22,15 @@ echo "Device found..."
 echo ""
 read -p "Open JP7 and press any key to continue... " -n1 -s
 
-cowsay "Okay, here we go!"
+cowsay -f sodomized-sheep "Okay, here we go!"
+sleep 2
+
+cd $RELEASE_PATH
+./do_linux_nandflash.sh
+
+echo ""
+echo ""
+echo "All done!"
+echo "Reset your device and watch it boot in the debug terminal"
+echo ""
+cowsay "Buh-bye!"

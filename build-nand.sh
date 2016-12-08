@@ -32,14 +32,16 @@ bitbake core-image-minimal
 bitbake atmel-qt5-demo-image
 
 # Release
+echo "Copying build artifacts to release..."
+
 cd $ORIG_WORKSPACE
 
-cp $BUILT_BOOTSTRAP $RELEASED_BOOTSTRAP
-cp $BUILT_UBOOT     $RELEASED_UBOOT
-cp $BUILT_KERNEL    $RELEASED_KERNEL
-cp $BUILT_DTB       $RELEASED_DTB
-cp $BUILT_ROOTFS    $RELEASED_ROOTFS
-cp $BUILT_UBENV     $RELEASED_UBENV
+cp -f $BUILT_BOOTSTRAP $RELEASED_BOOTSTRAP
+cp -f $BUILT_UBOOT     $RELEASED_UBOOT
+cp -f $BUILT_KERNEL    $RELEASED_KERNEL
+cp -f $BUILT_DTB       $RELEASED_DTB
+cp -f $BUILT_ROOTFS    $RELEASED_ROOTFS
+cp -f $BUILT_UBENV     $RELEASED_UBENV
 
 cp nandflash/*      $RELEASE_PATH/.
 

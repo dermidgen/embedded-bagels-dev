@@ -1,5 +1,6 @@
 #!/bin/bash
 
-source ../environment
+SAMBA=sam-ba_64
+SAMBA_DIR=sam-ba_cdc_linux
 
-$SAMBA /dev/ttyACM0 at91sama5d4x-ek linux_nandflash.tcl 2>&1 | tee logfile.log
+../bin/$SAMBA_DIR/$SAMBA /dev/ttyACM0 at91sama5d4x-ek linux_nandflash.tcl 2>&1 | tee logfile.log
