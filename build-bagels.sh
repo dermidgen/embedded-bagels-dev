@@ -2,13 +2,13 @@
 
 set -e
 
-TARGET="embedded-bagels-angstrom-build"
-WORKDIR="../$TARGET"
+TARGET="yocto-angstrom-build"
+WORKDIR="../../$TARGET"
 BUILD_PATH="$WORKDIR/deploy/glibc/images/raspberrypi2"
 BUILD_IMG="raspberrypi2_embedded-bagels.rootfs.rpi-sdimg"
 
 ## libc6-2.23 is required to build properly
-#sudo dpkg -i ./libc6/libc6-2.23-0ubuntu4_amd64.deb
+#sudo dpkg -i ./libc6/libc6_2.23-0ubuntu4_amd64.deb
 
 if [ ! -d "$WORKDIR" ]; then
   mkdir -p $WORKDIR
@@ -41,7 +41,8 @@ repo sync
 # MACHINE=raspberrypi2 bitbake -c cleanall shairport-sync
 # MACHINE=raspberrypi2 bitbake -c cleanall libsoxr shairport-sync
 # MACHINE=raspberrypi2 bitbake -c cleanall embedded-bagels-image
-MACHINE=raspberrypi2 bitbake embedded-bagels-image
+# MACHINE=sama5d4ek bitbake atmel-qt5-demo-image
+MACHINE=sama5d4-xplained bitbake embedded-bagels-image
 
 popd
 
@@ -59,6 +60,6 @@ popd
 cp "$BUILD_PATH/$BUILD_IMG" "$BUILD_IMG"
 
 ## Restore back to libc6-2.24
-#sudo apt-get install -f
-#sudo dpkg -i --force-overwrite ./libc6/libc6_2.24-3ubuntu1_amd64.deb
-#sudo apt-get install -f
+# sudo apt-get install -f
+# sudo dpkg -i --force-overwrite ./libc6/libc6_2.24-3ubuntu1_amd64.deb
+# sudo apt-get install -f

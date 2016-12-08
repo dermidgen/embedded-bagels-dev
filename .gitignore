@@ -1,0 +1,4 @@
+pkg/*.bin
+pkg/*.ubi
+pkg/*.dtb
+pkg/*.log
