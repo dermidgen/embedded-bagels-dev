@@ -4,6 +4,16 @@
 # Helper functions
 ##
 
+user_in_group()
+{
+  groups $1 | grep -q "\b$2\b"
+}
+
+user_not_in_group()
+{
+  ! user_in_group $1 $2
+}
+
 pkg_check ()
 {
   echo "Checking for pkg: $1"

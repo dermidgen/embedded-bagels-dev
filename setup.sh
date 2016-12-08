@@ -40,6 +40,12 @@ if [ ! -d $SAMBA_PATH ]; then
 fi
 echo "Using SAM-BA at $SAMBA_PATH/$SAMBA"
 
+echo "Ensure $USER in group: dialout"
+if user_not_in_group $USER dialout; then
+  echo "Adding $USER to group: dialout"
+  sudo useradd -G dialout $USER
+fi
+
 echo ""
 cowsay "All done!"
 echo ""
