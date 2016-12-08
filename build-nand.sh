@@ -1,20 +1,21 @@
-#!/bin/sh
+#!/bin/bash
 
-EM_TARGET=sama5d4-xplained
+source ./environment
+source ./lib/utils.sh
 
-POKY=../../Atmel/yocto/poky
-POKY_IMG_PATH=$POKY/build-atmel/tmp/deploy/images/$EM_TARGET
+ORIG_WORKSPACE=$(pwd)
 
-EM_IMG_PATH=./pkg
+path_ensure $RELEASE_PATH
 
-if [ ! -d $EM_IMG_PATH ]; then
-  mkdir $EM_IMG_PATH
-fi
+pushd $YOCTO_PATH
 
-cp $POKY_IMG_PATH/zImage-at91-sama5d4_xplained.dtb $EM_IMG_PATH/at91-sama5d4_xplained.dtb
-cp $POKY_IMG_PATH/at91bootstrap-sama5d4_xplained.bin $EM_IMG_PATH/.
-cp $POKY_IMG_PATH/atmel-qt5-demo-image-sama5d4-xplained.ubi $EM_IMG_PATH/atmel-xplained-demo-image-sama5d4-xplained.ubi
-cp $POKY_IMG_PATH/u-boot-sama5d4-xplained.bin $EM_IMG_PATH/.
-cp $POKY_IMG_PATH/sama5d4_xplained-nandflashboot-uboot-3.8.7.bin $EM_IMG_PATH/ubootEnvtFileNandFlash.bin
-cp $POKY_IMG_PATH/zImage-sama5d4-xplained.bin $EM_IMG_PATH/.
+# Release
 
+cp $BUILT_BOOTSTRAP $RELEASED_BOOTSTRAP
+cp $BUILT_UBOOT     $RELEASED_UBOOT
+cp $BUILT_KERNEL    $RELEASED_KERNEL
+cp $BUILT_DTB       $RELEASED_DTB
+cp $BUILT_ROOTFS    $RELEASED_ROOTFS
+cp $BUILT_UBENV     $RELEASED_UBENV
+
+cp nandflash/*      $RELEASE_PATH/.

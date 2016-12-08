@@ -1,3 +1,8 @@
+nandflash/*.bin
+nandflash/*.ubi
+nandflash/*.dtb
+nandflash/*.log
+
 resource/*
 release/*
 build/*

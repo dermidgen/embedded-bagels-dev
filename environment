@@ -1,0 +1,43 @@
+BIN_PATH=./bin
+BUILD_PATH=./build
+RELEASE_PATH=./release
+RESOURCE_PATH=./resource
+RESOURCE_SERVER=https://dl.dropboxusercontent.com/u/3944881/sw
+
+SAMBA=sam-ba_64
+SAMBA_VER=2.16
+SAMBA_ZIP="sam-ba_${SAMBA_VER}_linux.zip"
+SAMBA_DIR=sam-ba_cdc_linux
+SAMBA_PATH=$BIN_PATH/$SAMBA_DIR
+
+
+BOARD_TARGET=sama5d4-xplained
+
+YOCTO_PATH=$BUILD_PATH/yocto
+
+POKY_PATH=$YOCTO_PATH/poky
+POKY_IMAGES=$POKY_PATH/build-atmel/tmp/deploy/images/$BOARD_TARGET
+
+# AT91Boostrap
+BUILT_BOOTSTRAP=$POKY_IMAGES/at91bootstrap-sama5d4_xplained.bin
+RELEASED_BOOTSTRAP=$RELEASE_PATH/at91bootstrap-sama5d4_xplained.bin
+
+# U-Boot
+BUILT_UBOOT=$POKY_IMAGES/u-boot-sama5d4-xplained.bin
+RELEASED_UBOOT=$RELEASE_PATH/u-boot-sama5d4-xplained.bin
+
+# Linux kernel
+BUILT_KERNEL=$POKY_IMAGES/zImage-sama5d4-xplained.bin
+RELEASED_KERNEL=$RELEASE_PATH/zImage-sama5d4-xplained.bin
+
+# Device Tree binary
+BUILT_DTB=$POKY_IMAGES/zImage-at91-sama5d4_xplained.dtb
+RELEASED_DTB=$RELEASE_PATH/at91-sama5d4_xplained.dtb
+
+# Rootfs
+BUILT_ROOTFS=$POKY_IMAGES/atmel-qt5-demo-image-sama5d4-xplained.ubi
+RELEASED_ROOTFS=$RELEASE_PATH/atmel-xplained-demo-image-sama5d4-xplained.ubi
+
+# U-Boot Env
+BUILT_UBENV=$POKY_IMAGES/sama5d4_xplained-nandflashboot-uboot-3.8.7.bin
+RELEASED_UBENV=$RELEASE_PATH/ubootEnvtFileNandFlash.bin
