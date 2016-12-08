@@ -14,6 +14,11 @@ Build scripts and environment for Embedded Bagels builds &amp; releases
   + bitbake atmel-qt5-demo-image
   + copy build artifacts to release dir
   + copy nandflash scripts to release dir
+ * `./burn-nandflash.sh`
+  + fire up debug terminal
+  + wait for device connection
+  + wait for JP7 to open
+  + flash the board
 
 *Note*
 Full build will require ~80 GiB disk-space.
