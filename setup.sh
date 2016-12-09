@@ -7,10 +7,36 @@ source ./lib/utils.sh
 # Install pre-requisites
 ##
 
-pkg_ensure "picocom"
+## Utils
 pkg_ensure "curl"
-pkg_ensure "screen"
 pkg_ensure "cowsay"
+
+## Kali patch;
+if [ ! -f /usr/bin/cowsay ]; then
+  if [ -f /usr/games/cowsay ]; then
+    sudo ln -s /usr/games/cowsay /usr/bin/cowsay
+  fi
+fi
+
+## perlbrew
+if [ ! -f ~/perl5/perlbrew/etc/bashrc ]; then
+  \curl -L https://install.perlbrew.pl | bash
+fi 
+
+source ~/perl5/perlbrew/etc/bashrc
+
+perlbrew install perl-$PERL_VERSION
+perlbrew use perl-$PERL_VERSION
+
+## Debug
+pkg_ensure "picocom"
+
+## Build tools
+pkg_ensure "build-essential"
+pkg_ensure "diffstat"
+pkg_ensure "texinfo"
+pkg_ensure "gawk"
+pkg_ensure "chrpath"
 
 ##
 # Setup workspace

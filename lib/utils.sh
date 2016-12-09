@@ -28,7 +28,7 @@ pkg_check ()
 pkg_install ()
 {
   echo "$1 not found. Setting up $1."
-  sudo apt-get --force-yes --yes install $1
+  sudo apt-get -y -f install $1
 }
 
 pkg_ensure ()
