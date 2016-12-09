@@ -26,7 +26,7 @@ fi
 source ~/perl5/perlbrew/etc/bashrc
 
 perlbrew install perl-$PERL_VERSION
-perlbrew use perl-$PERL_VERSION
+perlbrew switch perl-$PERL_VERSION
 
 ## Debug
 pkg_ensure "picocom"
