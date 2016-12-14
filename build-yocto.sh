@@ -20,8 +20,14 @@ repo sync --force-sync
 
 source eb-init-build-env
 
+TARGET=${1:-atmel-qt5-demo-image}
+
 # bitbake core-image-minimal
-bitbake atmel-qt5-demo-image
+if [ "$2" == "clean" ]; then
+  bitbake -c cleanall $TARGET
+fi
+
+bitbake $TARGET
 
 # Release
 echo "Copying build artifacts to release..."
