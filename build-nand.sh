@@ -16,7 +16,7 @@ if [ ! -d ".repo" ]; then
   repo init -u git@github.com:dermidgen/embedded-bagels-platform.git -b master
 fi
 
-repo sync
+repo sync --force-sync
 
 source eb-init-build-env
 
