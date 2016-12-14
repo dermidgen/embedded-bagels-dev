@@ -7,7 +7,7 @@ Build scripts and environment for Embedded Bagels builds &amp; releases
   + make sure the paths are created
   + install pre-requisites
   + download & setup local sam-ba 2.16
- * `./build-nand.sh`
+ * `./build-yocto.sh`
   + clone/sync yocto layers from repos
   + patch poky/build-atmel config
   + bitbake core-image-minimal
@@ -19,6 +19,13 @@ Build scripts and environment for Embedded Bagels builds &amp; releases
   + wait for device connection
   + wait for JP7 to open
   + flash the board
+
+## Usage
+```
+./setup.sh
+./build-yocto.sh
+./burn-nandflash.sh
+```
 
 *Note*
 ```

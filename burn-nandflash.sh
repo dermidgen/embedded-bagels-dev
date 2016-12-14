@@ -4,11 +4,12 @@ source ./environment
 source ./lib/utils.sh
 source ./lib/acm.sh
 
-ORIG_WORKSPACE=$(pwd)
-
 echo "Getting ready to flash NAND"
 echo "Firing up debug terminal /dev/ttyUSB0..."
 sleep 1
+
+## Pop out a new terminal for running picocom
+# * requires an intermediary script to execute picocom
 echo `(x-terminal-emulator --working-directory $ORIG_WORKSPACE -e $ORIG_WORKSPACE/debug-term.sh &> /dev/null) &`;
 
 sleep 1
