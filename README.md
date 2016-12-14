@@ -27,6 +27,18 @@ Build scripts and environment for Embedded Bagels builds &amp; releases
 ./burn-nandflash.sh
 ```
 
+### Build Options
+
+Build options allow you to specify a target and optionally clean the target. There are two optional build targets at this time.
+
+ * `core-image-minimal`
+ * `atmel-qt5-demo-image` - *default*
+
+
+```
+./build-yocto.sh [core-image-minimal|atmel-qt5-demo-image] [clean]
+```
+
 *Note*
 ```
 Full build will require ~80 GiB disk-space.
