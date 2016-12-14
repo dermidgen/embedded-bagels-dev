@@ -6,6 +6,8 @@ RELEASE_PATH=./release
 RESOURCE_PATH=./resource
 RESOURCE_SERVER=https://dl.dropboxusercontent.com/u/3944881/sw
 
+REPO_PATH="$HOME/bin/repo"
+
 PERL_VERSION=5.22.1
 
 SAMBA=sam-ba_64
@@ -19,7 +21,7 @@ BOARD_TARGET=sama5d4-xplained
 
 YOCTO_PATH=$BUILD_PATH/yocto
 
-POKY_PATH=$YOCTO_PATH/poky
+POKY_PATH=$YOCTO_PATH/sources/poky
 POKY_IMAGES=$POKY_PATH/build-atmel/tmp/deploy/images/$BOARD_TARGET
 
 # AT91Boostrap

@@ -12,23 +12,15 @@ path_ensure $RELEASE_PATH
 
 cd $YOCTO_PATH
 
-# TODO switch to repo tool from el-goog
-# Sync repos & layers
-repo_sync poky              git://git.yoctoproject.org/poky               krogoth
-repo_sync meta-qt5          git://github.com/meta-qt5/meta-qt5.git        krogoth
-repo_sync meta-atmel        git://github.com/linux4sam/meta-atmel.git     krogoth
-repo_sync meta-openembedded git://git.openembedded.org/meta-openembedded  krogoth
+if [ ! -d ".repo" ]; then
+  repo init -u git@github.com:dermidgen/embedded-bagels-platform.git -b master
+fi
 
+repo sync
 
-# Yocto time
-cd poky
-source oe-init-build-env build-atmel
+source eb-init-build-env
 
-# Apply our configs
-cp -f ../../../../conf/bblayers.conf ./conf/.
-cp -f ../../../../conf/local.conf ./conf/.
-
-bitbake core-image-minimal
+# bitbake core-image-minimal
 bitbake atmel-qt5-demo-image
 
 # Release
