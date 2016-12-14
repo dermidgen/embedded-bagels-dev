@@ -1,3 +1,5 @@
+export PATH=$HOME/bin:$(pwd)/bin:$PATH
+
 ORIG_WORKSPACE=$(pwd)
 
 BIN_PATH=./bin
@@ -21,7 +23,7 @@ BOARD_TARGET=sama5d4-xplained
 
 YOCTO_PATH=$BUILD_PATH/yocto
 
-POKY_PATH=$YOCTO_PATH/sources/poky
+POKY_PATH=$YOCTO_PATH/poky
 POKY_IMAGES=$POKY_PATH/build-atmel/tmp/deploy/images/$BOARD_TARGET
 
 # AT91Boostrap

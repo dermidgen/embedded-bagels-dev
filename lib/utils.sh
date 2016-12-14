@@ -73,3 +73,17 @@ repo_sync ()
   git fetch --all --prune && git pull origin $3
   popd
 }
+
+repo_tool_ensure ()
+{
+  echo "Checking for repo tool"
+  if [ ! -f "$HOME/bin/repo" ]; then
+    echo "Installing repo tool to $REPO_PATH"
+    mkdir -p "$HOME/bin"
+    curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > $HOME/bin/repo
+    chmod a+x $HOME/bin/repo
+    echo "Installed repo tool to $HOME/bin/repo; update $HOME/.bashrc to automatically add $HOME/bin to \$PATH"
+  else
+    echo "  ... found repo tool: $REPO_PATH"
+  fi
+}

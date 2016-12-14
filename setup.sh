@@ -29,17 +29,7 @@ perlbrew install perl-$PERL_VERSION
 perlbrew switch perl-$PERL_VERSION
 
 ## Repo
-if [ ! -f "$HOME/bin/repo" ]; then
-  echo "Installing repo tools to $REPO_PATH"
-  mkdir -p "$HOME/bin"
-  curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > $HOME/bin/repo
-  chmod a+x $HOME/bin/repo
-  echo "Installed repo tools to $HOME/bin/repo; update $HOME/.bashrc to automatically add $HOME/bin to \$PATH"
-else
-  echo "  found repo: $REPO_PATH"
-fi
-
-export PATH=$HOME/bin:$PATH
+repo_tool_ensure
 
 ## Debug
 pkg_ensure "picocom"
@@ -79,10 +69,14 @@ if [ ! -d $SAMBA_PATH ]; then
 fi
 echo "Using SAM-BA at $SAMBA_PATH/$SAMBA"
 
-echo "Ensure $USER in group: dialout"
+echo "Ensure $USER in groups"
 if user_not_in_group $USER dialout; then
   echo "Adding $USER to group: dialout"
   sudo usermod -a -G dialout $USER
+  sudo usermod -a -G adm $USER
+  sudo usermod -a -G dip $USER
+  sudo usermod -a -G plugdev $USER
+  sudo usermod -a -G netdev $USER
 fi
 
 echo ""
