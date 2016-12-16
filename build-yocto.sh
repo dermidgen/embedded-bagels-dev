@@ -13,7 +13,7 @@ path_ensure $RELEASE_PATH
 cd $YOCTO_PATH
 
 if [ ! -d ".repo" ]; then
-  repo init -u git@github.com:dermidgen/embedded-bagels-platform.git -b master
+  repo init -u https://github.com/dermidgen/embedded-bagels-platform.git -b master
 fi
 
 repo sync --force-sync
