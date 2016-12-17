@@ -20,6 +20,7 @@ SAMBA_PATH=$BIN_PATH/$SAMBA_DIR
 
 
 BOARD_TARGET=sama5d4-xplained
+BITBAKE_TARGET=embedded-bagels-image
 
 YOCTO_PATH=$BUILD_PATH/yocto
 
@@ -43,7 +44,7 @@ BUILT_DTB=$POKY_IMAGES/zImage-at91-sama5d4_xplained.dtb
 RELEASED_DTB=$RELEASE_PATH/at91-sama5d4_xplained.dtb
 
 # Rootfs
-BUILT_ROOTFS=$POKY_IMAGES/atmel-qt5-demo-image-sama5d4-xplained.ubi
+BUILT_ROOTFS=$POKY_IMAGES/$BITBAKE_TARGET-sama5d4-xplained.ubi
 RELEASED_ROOTFS=$RELEASE_PATH/atmel-xplained-demo-image-sama5d4-xplained.ubi
 
 # U-Boot Env

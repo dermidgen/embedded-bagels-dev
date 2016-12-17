@@ -29,15 +29,19 @@ Build scripts and environment for Embedded Bagels builds &amp; releases
 
 ### Build Options
 
-Build options allow you to specify a target and optionally clean the target. There are two optional build targets at this time.
+Build options allow you to specify a target and optionally clean the target.
+
+There are two optional build targets at this time.
 
  * `core-image-minimal`
  * `atmel-qt5-demo-image` - *default*
 
 
 ```
-./build-yocto.sh [core-image-minimal|atmel-qt5-demo-image] [clean]
+./build-yocto.sh [core-image-minimal|atmel-qt5-demo-image] [clean|superclean]
 ```
+
+Using the `superclean` option will wipe the build's tmp directory. This is a great way to clean up stale images that have been built without loosing the caches of source downloads and build artifacts.
 
 *Note*
 ```

@@ -20,13 +20,24 @@ repo sync --force-sync
 
 source eb-init-build-env
 
-TARGET=${1:-atmel-qt5-demo-image}
+# Target for Bitbake to build
+#  * core-image-minimal
+#  * atmel-qt5-demo-image
+#  * embedded-bagels-image (default)
+TARGET=${1:-$BITBAKE_TARGET}
 
-# bitbake core-image-minimal
+# Bitbake clean
 if [ "$2" == "clean" ]; then
   bitbake -c cleanall $TARGET
 fi
 
+# Super clean
+if [ "$2" == "superclean" ]; then
+  rm -rf ./tmp
+  bitbake -c cleanall $TARGET
+fi
+
+# Build
 bitbake $TARGET
 
 # Release
